@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (_) => AuthenticationProviderr(Dio()), // Create an instance of the AuthenticationProvider
+      create: (_) => loginn(Dio()), // Create an instance of the AuthenticationProvider
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Booking Hotels',
@@ -26,44 +26,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: LoginPage(),
-        //home: ProfilePage(),
-        //home: ProfilePage(),
-        //home: FooterBar(),
-        //home:HotelColumn(),
-        //home: SettingsPage(),
+
 
       ),
-    );
-  }
-}
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  void _incrementCounter() {
-    setState(() {
-
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
-      ),
-
     );
   }
 }

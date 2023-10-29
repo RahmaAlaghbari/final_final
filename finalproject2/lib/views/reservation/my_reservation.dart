@@ -47,7 +47,9 @@ class HotelCard extends StatefulWidget {
       }
       return null;
     } catch (e) {
-      print(e.toString()); // Handle the error gracefully, e.g., display an error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('$e.toString()'),backgroundColor:Colors.brown[300]),);
+      // Handle the error gracefully, e.g., display an error message
       return null;
     }
   }
@@ -57,7 +59,9 @@ class HotelCard extends StatefulWidget {
       HotelModel? hotel = await HotelRepository().getById(hotelId);
       return hotel;
     } catch (e) {
-      print(e.toString()); // Handle the error gracefully, e.g., display an error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('$e.toString()'),backgroundColor:Colors.brown[300]),);
+      // Handle the error gracefully, e.g., display an error message
       return null;
     }
   }

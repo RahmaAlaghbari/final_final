@@ -175,6 +175,8 @@ class _CompAdd extends State<CompAdd> {
                     issuccess=false;
                     iserror=true;
                     error="Exception: ${e}";
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('$error'),backgroundColor:Colors.brown[300]),);
 
                   });
                 }

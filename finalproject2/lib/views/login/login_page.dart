@@ -29,8 +29,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
 
-    AuthenticationProviderr authProvider =
-    Provider.of<AuthenticationProviderr>(context, listen: false);
+    loginn authProvider =
+    Provider.of<loginn>(context, listen: false);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -137,16 +137,11 @@ class _LoginPageState extends State<LoginPage> {
                                 CircleAvatar(
                                   radius: 30,
                                   backgroundColor: Colors.brown[200],
-                                  child: _isLoading ? Visibility(
-                                    visible: _isLoading,
-                                    child: CircularProgressIndicator(),
-
-                                  ) :  IconButton(
+                                  child :  IconButton(
                                       color: Colors.white,
                                       onPressed: () async {
                                         if (formKey.currentState!.validate()) {
                                           setState(() {
-                                            _isLoading = true;
                                             _isSubmitPressed = true;
                                           });
 

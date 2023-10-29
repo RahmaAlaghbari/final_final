@@ -155,7 +155,8 @@ class _DashboardPageState extends State<DashboardPage> {
         userCount = userList.length; // Update the user count
       });
     } catch (ex) {
-      print('Error getting user count: $ex');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error getting user count: $ex'),backgroundColor:Colors.brown[300]),);
     }
   }
   Future<void> gethotelCount() async {
@@ -165,7 +166,8 @@ class _DashboardPageState extends State<DashboardPage> {
         hotelCount = hotelList.length; // Update the user count
       });
     } catch (ex) {
-      print('Error getting Hotel count: $ex');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error getting Hotel count: $ex'),backgroundColor:Colors.brown[300]),);
     }
   }
   Future<void> getresCount() async {
@@ -175,7 +177,8 @@ class _DashboardPageState extends State<DashboardPage> {
         resCount = hotelList.length; // Update the user count
       });
     } catch (ex) {
-      print('Error getting Reservation count: $ex');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error getting Reservation count: $ex'),backgroundColor:Colors.brown[300]),);
     }
   }
   Future<void> getcompCount() async {
@@ -185,7 +188,8 @@ class _DashboardPageState extends State<DashboardPage> {
         compCount = hotelList.length; // Update the user count
       });
     } catch (ex) {
-      print('Error getting Complaints count: $ex');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error getting Complaints count: $ex'),backgroundColor:Colors.brown[300]),);
     }
   }
 

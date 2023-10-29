@@ -5,7 +5,7 @@ class myerrorsnack {
   static void showErrorSnackbar(BuildContext context, String word) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor:Color(0xFFA76F6F),
+        backgroundColor:Colors.brown[300],
         content: Text('${word} Not Found.'),
         duration: Duration(seconds: 2),
       ),

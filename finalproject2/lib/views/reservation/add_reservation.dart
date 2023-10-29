@@ -105,17 +105,12 @@ class _ReservationPageState extends State<ReservationPage> {
                   ),
                 ),
 
-                validator: (val){
-                  if(val == ""){
-                    return "value is null";}
-                  if(val != null){
-                    if(val.length <3){
-                      return "name must be more than 3 chars";
-                    }
-
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter the Phone Number';
                   }
-                }
-                ,
+                  return null;
+                },
 
               ),
             ),
@@ -144,17 +139,12 @@ class _ReservationPageState extends State<ReservationPage> {
                   ),
                 ),
 
-                validator: (val){
-                  if(val == ""){
-                    return "value is null";}
-                  if(val != null){
-                    if(val.length <3){
-                      return "name must be more than 3 chars";
-                    }
-
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter the Phone Number';
                   }
-                }
-                ,
+                  return null;
+                },
 
               ),
             ),
@@ -167,6 +157,8 @@ class _ReservationPageState extends State<ReservationPage> {
                 fontWeight: FontWeight.bold,
                 color: Colors.brown[300],
               ),
+
+
             ),
             SizedBox(height: 20.0),
             Text(
@@ -199,17 +191,19 @@ class _ReservationPageState extends State<ReservationPage> {
                 });
               },
 
-              validator: (val){
-                if(val == ""){
-                  return "value is null";}
-                if(val != null){
-                  if(val.length <3){
-                    return "name must be more than 3 chars";
+                validator: (val) {
+                  if (val == "") {
+                    return "value is null";
+                  }
+                  if (val != null) {
+
+                    if (!RegExp(r'^[0-9]+$').hasMatch(val)) {
+                      return "numberOfGuests can only contain alphabets and spaces";
+                    }
+
                   }
 
                 }
-              }
-              ,
 
             ),
 
@@ -280,6 +274,8 @@ class _ReservationPageState extends State<ReservationPage> {
             issuccess=false;
             iserror=true;
             error="Exception: ${e}";
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('$error'),backgroundColor:Colors.brown[300]),);
 
           });
         }

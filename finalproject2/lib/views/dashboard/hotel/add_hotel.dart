@@ -89,17 +89,22 @@ class _hotelAdd extends State<hotelAdd> {
                 ),
 
 
-                validator: (val){
-                  if(val == ""){
-                    return "value is null";}
-                  if(val != null){
-                    if(val.length <3){
-                      return "name must be more than 3 chars";
+
+                  validator: (val) {
+                    if (val == "") {
+                      return "value is null";
+                    }
+                    if (val != null) {
+                      if (val.length < 3) {
+                        return "name must be more than 3 chars";
+                      }
+                      if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(val)) {
+                        return "Name can only contain alphabets and spaces";
+                      }
+
                     }
 
                   }
-                }
-                ,
 
               ),
             ),//name
@@ -126,17 +131,22 @@ class _hotelAdd extends State<hotelAdd> {
                 ),
 
 
-                validator: (val){
-                  if(val == ""){
-                    return "value is null";}
-                  if(val != null){
-                    if(val.length <3){
-                      return "Desdescription Name must be more than 3 chars";
+
+                  validator: (val) {
+                    if (val == "") {
+                      return "value is null";
+                    }
+                    if (val != null) {
+                      if (val.length < 3) {
+                        return "Desdescription Name must be more than 3 chars";
+                      }
+                      if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(val)) {
+                        return "Desdescription Name can only contain alphabets and spaces";
+                      }
+
                     }
 
                   }
-                }
-                ,
 
               ),
             ),
@@ -163,17 +173,20 @@ class _hotelAdd extends State<hotelAdd> {
                 ),
 
 
-                validator: (val){
-                  if(val == ""){
-                    return "value is null";}
-                  if(val != null){
-                    if(val.length <3){
-                      return "email must be more than 3 chars";
+                  validator: (val) {
+                    if (val == "") {
+                      return "value is null";
+                    }
+                    if (val != null) {
+                      if (val.length < 3) {
+                        return "Desdescription must be more than 3 chars";
+                      }
+
+
                     }
 
                   }
-                }
-                ,
+
 
               ),
             ),
@@ -206,6 +219,11 @@ class _hotelAdd extends State<hotelAdd> {
                     child: Text(Category),
                   );
                 }).toList(),
+                  validator: (val) {
+                    if (val == "") {
+                      return "value is null";
+                    }
+                  }
               ),
             ),
 
@@ -232,17 +250,10 @@ class _hotelAdd extends State<hotelAdd> {
 
 
                 ),
-
-
                 validator: (val){
                   if(val == ""){
                     return "value is null";}
-                  if(val != null){
-                    if(val.length <3){
-                      return "password must be more than 3 chars";
-                    }
 
-                  }
                 }
                 ,
 
@@ -276,7 +287,7 @@ class _hotelAdd extends State<hotelAdd> {
                     return "value is null";}
                   if(val != null){
                     if(val.length <3){
-                      return "password must be more than 3 chars";
+                      return "location must be more than 3 chars";
                     }
 
                   }
@@ -340,6 +351,11 @@ class _hotelAdd extends State<hotelAdd> {
                     issuccess=false;
                     iserror=true;
                     error="Exception: ${e}";
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('$error'),backgroundColor:Colors.brown[300],
+                      ),
+                    );
 
                   });
                 }

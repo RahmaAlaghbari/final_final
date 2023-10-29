@@ -79,6 +79,10 @@ class _HotelDelete extends State<HotelDelete> {
                         loading = false;
                         isError = true;
                         errorMsg = "Exception: ${e.toString()}";
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('$errorMsg'),backgroundColor:Colors.brown[300],
+                          ),
+                        );
                       });
                     }
                   },

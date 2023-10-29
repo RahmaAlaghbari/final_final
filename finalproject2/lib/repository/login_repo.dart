@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'authontication.dart';
 
-class AuthenticationProviderr {
+class loginn {
 
   final Dio _dio;
 
-  AuthenticationProviderr(this._dio);
+  loginn(this._dio);
 
   Future<bool> login(String email, String password) async {
     try {

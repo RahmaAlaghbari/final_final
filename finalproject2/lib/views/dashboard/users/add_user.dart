@@ -95,17 +95,22 @@ class _userAdd extends State<userAdd> {
                   ),
 
 
-                  validator: (val){
-                    if(val == ""){
-                      return "value is null";}
-                    if(val != null){
-                      if(val.length <3){
-                        return "name must be more than 3 chars";
+                    validator: (val) {
+                      if (val == "") {
+                        return "value is null";
+                      }
+                      if (val != null) {
+                        if (val.length < 3) {
+                          return "name must be more than 3 chars";
+                        }
+                        if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(val)) {
+                          return "Name can only contain alphabets and spaces";
+                        }
+
                       }
 
                     }
-                  }
-                  ,
+
 
                 ),
               ),//name
@@ -132,17 +137,22 @@ class _userAdd extends State<userAdd> {
                   ),
 
 
-                  validator: (val){
-                    if(val == ""){
-                      return "value is null";}
-                    if(val != null){
-                      if(val.length <3){
-                        return "User Name must be more than 3 chars";
+                    validator: (val) {
+                      if (val == "") {
+                        return "value is null";
+                      }
+                      if (val != null) {
+                        if (val.length < 3) {
+                          return "User name must be more than 3 chars";
+                        }
+                        if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(val)) {
+                          return "User Name can only contain alphabets and spaces";
+                        }
+
                       }
 
                     }
-                  }
-                  ,
+
 
                 ),
               ),
@@ -169,17 +179,21 @@ class _userAdd extends State<userAdd> {
                   ),
 
 
-                  validator: (val){
-                    if(val == ""){
-                      return "value is null";}
-                    if(val != null){
-                      if(val.length <3){
-                        return "email must be more than 3 chars";
-                      }
-
+                  validator: (value) {
+                    RegExp emailRegex =
+                    RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
+                    if (value == null) {
+                      return 'Email is required';
+                    } else if (value.length < 10) {
+                      return 'Email must be more than 10 characters';
+                    } else if (!value.contains('@')) {
+                      return 'Email must contain @';
+                    } else if (!emailRegex.hasMatch(value)) {
+                      return 'Invalid email';
                     }
-                  }
-                  ,
+
+                    return null;
+                  },
 
                 ),
               ),
@@ -286,6 +300,14 @@ class _userAdd extends State<userAdd> {
                       child: Text(gender),
                     );
                   }).toList(),
+
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter a gender';
+                    }
+                    return null;
+                  },
+
                 ),
               ),
               Padding(
@@ -316,6 +338,12 @@ class _userAdd extends State<userAdd> {
                       child: Text(permission),
                     );
                   }).toList(),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter a Permission';
+                    }
+                    return null;
+                  },
                 ),
               ),
 
@@ -370,6 +398,9 @@ class _userAdd extends State<userAdd> {
                       issuccess=false;
                       iserror=true;
                       error="Exception: ${e}";
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('$error'),backgroundColor:Colors.brown[300],
+                          ),);
 
                     });
                   }

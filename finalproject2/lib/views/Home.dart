@@ -13,11 +13,6 @@ class HomePage extends StatelessWidget {
       body: Stack(
         children: [
           DrawerScreen(),
-          //
-          // ProfilePage(),
-          // CompAdd(),
-          // Myfav(),
-          // MyReservations(),
           HotelCardh(),
 
 

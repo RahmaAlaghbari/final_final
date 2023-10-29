@@ -77,6 +77,8 @@ class _UserDelete extends State<UserDelete> {
                         loading = false;
                         isError = true;
                         errorMsg = "Exception: ${e.toString()}";
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('$errorMsg'),backgroundColor:Colors.brown[300]),);
                       });
                     }
                   },

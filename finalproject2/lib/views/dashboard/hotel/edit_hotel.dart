@@ -56,7 +56,10 @@ class _HotelUpdateState extends State<HotelUpdate> {
       }
     } catch (e) {
       // Handle any errors
-      print('Error loading hotel: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error loading hotel: $e'),backgroundColor:Colors.brown[300],
+        ),
+      );
     }
   }
 
@@ -94,7 +97,7 @@ class _HotelUpdateState extends State<HotelUpdate> {
       } catch (e) {
         // Handle any errors
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error updating hotel: $e')),
+          SnackBar(content: Text('Error updating hotel: $e'),backgroundColor:Colors.brown[300],)
         );
       }
     }
@@ -129,12 +132,21 @@ class _HotelUpdateState extends State<HotelUpdate> {
                   TextFormField(
                     controller: _nameController,
                     decoration: InputDecoration(labelText: 'Name'),
-                    validator: (value) {
-                      if (value!.isEmpty) {
+
+                    validator: (val) {
+                      if (val!.isEmpty) {
                         return 'Please enter a name';
+                      }
+                      if (val.length < 3) {
+                        return "price must be more than 3 chars";
+                      }
+                      if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(val)) {
+                        return "Name can only contain alphabets and spaces";
                       }
                       return null;
                     },
+
+
                   ),
                   TextFormField(
                     controller: _descnmaeController,
@@ -159,9 +171,12 @@ class _HotelUpdateState extends State<HotelUpdate> {
                   TextFormField(
                     controller: _descriptionController,
                     decoration: InputDecoration(labelText: 'Description'),
-                    validator: (value) {
-                      if (value!.isEmpty) {
+                    validator: (val) {
+                      if (val!.isEmpty) {
                         return 'Please enter a description';
+                      }
+                      if (val.length < 3) {
+                        return "price must be more than 3 chars";
                       }
                       return null;
                     },
@@ -207,6 +222,13 @@ class _HotelUpdateState extends State<HotelUpdate> {
                           child: Text(Category),
                         );
                       }).toList(),
+
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter a Category';
+                        }
+                        return null;
+                      },
                     ),
                   ),
 
@@ -217,12 +239,18 @@ class _HotelUpdateState extends State<HotelUpdate> {
                   TextFormField(
                     controller: _priceController,
                     decoration: InputDecoration(labelText: 'Price'),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter a price';
+                      validator: (val) {
+                        if (val!.isEmpty) {
+                          return 'Please enter a price';
+                        }
+                        if (val != null) {
+                          if (!RegExp(r'^[0-9 ]+$').hasMatch(val)) {
+                            return "price can only contain number and spaces";
+                          }
+
+                        }
+
                       }
-                      return null;
-                    },
                   ),
 
 

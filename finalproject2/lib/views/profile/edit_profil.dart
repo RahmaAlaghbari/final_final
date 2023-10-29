@@ -60,7 +60,8 @@ class _userUpdate extends State<userUpdate> {
       }
     } catch (e) {
       // Handle any errors
-      print('Error loading user: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error loading user: $e'),backgroundColor:Colors.brown[300]),);
     }
   }
 
@@ -102,7 +103,8 @@ class _userUpdate extends State<userUpdate> {
       } catch (e) {
         // Handle any errors
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error updating user')),
+          SnackBar(content: Text('Error updating user'),backgroundColor:Colors.brown[300],
+          ),
         );
       }
     }
@@ -121,28 +123,7 @@ class _userUpdate extends State<userUpdate> {
 
     super.dispose();
   }
-  // Uint8List?  _imgController;
-//   String? _imgString;
-//
-// // ...
-//   DecorationImage? _backgroundImage;
-//
-// // ...
-//
-//   void selectImage() async {
-//     final imagePicker = ImagePicker();
-//     final pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
-//     if (pickedImage != null) {
-//       final imageBytes = await pickedImage.readAsBytes();
-//       final base64Image = base64Encode(imageBytes);
-//       setState(() {
-//         _backgroundImage = DecorationImage(
-//           image: MemoryImage(base64Decode(base64Image)),
-//           fit: BoxFit.cover,
-//         );
-//       });
-//     }
-//   }
+
 
   File? _imgFile;
 
@@ -233,7 +214,9 @@ Widget build(BuildContext context) {
                               if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(val)) {
                                 return "Name can only contain alphabets and spaces";
                               }
+
                             }
+
                           }
                       ),
                       TextFormField(
@@ -285,12 +268,18 @@ Widget build(BuildContext context) {
 
 
                         ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter a password';
+                          validator: (val) {
+                            if (val == "") {
+                              return "value is null";
+                            }
+                            if (val != null) {
+                              if (val.length < 3) {
+                                return "Password must be more than 3 chars";
+                              }
+
+                            }
+
                           }
-                          return null;
-                        },
                       ),
                       TextFormField(
                         controller: _phoneController,

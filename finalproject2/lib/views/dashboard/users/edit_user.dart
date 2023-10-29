@@ -57,7 +57,8 @@ class _UserUpdate extends State<UserUpdate> {
       }
     } catch (e) {
       // Handle any errors
-      print('Error loading user: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error loading user: $e'),backgroundColor:Colors.brown[300]),);
     }
   }
 
@@ -98,7 +99,7 @@ class _UserUpdate extends State<UserUpdate> {
       } catch (e) {
         // Handle any errors
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error updating user')),
+          SnackBar(content: Text('Error updating user') ,backgroundColor:Colors.brown[300]),
         );
       }
     }
@@ -158,6 +159,12 @@ class _UserUpdate extends State<UserUpdate> {
                           child: Text(permission),
                         );
                       }).toList(),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter a Permission ';
+                        }
+                        return null;
+                      },
                     ),
                   ),
 

@@ -427,7 +427,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         resCount = hotelList.length; // Update the user count
       });
     } catch (ex) {
-      print('Error getting Reservation count: $ex');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error getting Reservation count: $ex'),backgroundColor:Colors.brown[300]),);
     }
   }
 
@@ -438,7 +439,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         favCount = fav.length; // Update the user count
       });
     } catch (ex) {
-      print('Error getting Complaints count: $ex');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error getting Complaints count: $ex'),backgroundColor:Colors.brown[300]),);
     }
   }
 
