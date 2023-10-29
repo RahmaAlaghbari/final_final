@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:project4/views/profile/profile_page.dart';
 import 'package:provider/provider.dart';
 import 'repository/login_repo.dart';
 import 'views/login/login_page.dart';

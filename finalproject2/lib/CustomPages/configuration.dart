@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project4/views/add_comp.dart';
-import 'package:project4/views/profile/profile_page.dart';
 
 import '../views/favorit.dart';
 import '../views/hotel/Hotels_page.dart';

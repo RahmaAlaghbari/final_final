@@ -11,6 +11,7 @@ import '../../models/fav_model.dart';
 import '../../models/hotel_model.dart';
 import '../../repository/fav_repo.dart';
 import '../../repository/hotel_repo.dart';
+import '../profile/ProfileScreen.dart';
 import '../reservation/add_reservation.dart';
 import '../setting_page.dart';
 import 'Hotal_detail.dart';
@@ -48,6 +49,8 @@ class HotelCardh extends StatefulWidget {
 }
 
 class _HotelCardState extends State<HotelCardh> {
+  final File _imgFile = File(AuthenticationProvider.img!);
+
   int _currentIndex = 0;
 
   FavRepository _favoriteRepository = FavRepository();
@@ -139,7 +142,15 @@ class _HotelCardState extends State<HotelCardh> {
                           ),
                         ],
                       ),
-                      CircleAvatar()
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ProfileScreen()),);
+
+                        },
+                        child:  CircleAvatar(backgroundImage:  FileImage(_imgFile),),
+                      )
                     ],
                   ),
                 ],

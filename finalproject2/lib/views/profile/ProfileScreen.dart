@@ -1,19 +1,60 @@
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:project4/repository/fav_repo.dart';
 import 'package:project4/views/favorit.dart';
 import 'package:project4/views/profile/personal_info%20page.dart';
 import 'package:project4/views/reservation/my_reservation.dart';
 
 import '../../CustomPages/appbar.dart';
+import '../../models/fav_model.dart';
+import '../../models/reservation_model.dart';
 import '../../repository/authontication.dart';
+import '../../repository/reservation_repo.dart';
 import '../login/login_page.dart';
 import 'edit_profil.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
+
+
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final ReservationRepository resRepository = ReservationRepository();
+
+
+
+  int resCount = 0;
+
+  int favCount = 0;
+
+  // Variable to store the user count
+  @override
+  void initState() {
+    super.initState();
+    // Call the method to get the user count when the view is initialized
+    getresCount(); // Call the method to get the user count when the view is initialized
+    getfavCount(); // Call the method to get the user count when the view is initialized
+  }
+
+  final File _imgFile = File(AuthenticationProvider.img!);
+
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    double height = MediaQuery
+        .of(context)
+        .size
+        .height;
     return Stack(
       children: [
         Container(
@@ -42,7 +83,6 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-
                           Navigator.of(context).pop();
                           // Handle onTap for the first icon (AntDesign.arrowleft)
                         },
@@ -56,12 +96,13 @@ class ProfileScreen extends StatelessWidget {
                           AuthenticationProvider.logout();
                           Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(builder: (context) => LoginPage()),
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()),
                                 (route) => false,
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              backgroundColor:Colors.brown[200],
+                              backgroundColor: Colors.brown[200],
                               content: Text('Logged out successfully.'),
                               duration: Duration(seconds: 2),
                             ),
@@ -88,11 +129,14 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 22,
+                    height: 30,
                   ),
                   Container(
-                    height: height * 0.43,
+                    height: height * 0.50,
+
+
                     child: LayoutBuilder(
+
                       builder: (context, constraints) {
                         double innerHeight = constraints.maxHeight;
                         double innerWidth = constraints.maxWidth;
@@ -103,8 +147,9 @@ class ProfileScreen extends StatelessWidget {
                               bottom: 0,
                               left: 0,
                               right: 0,
+
                               child: Container(
-                                height: innerHeight * .93,
+                                height: innerHeight * .86,
                                 width: innerWidth,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
@@ -113,7 +158,7 @@ class ProfileScreen extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      height: 80,
+                                      height: 100,
                                     ),
                                     Text(
                                       '${AuthenticationProvider.fName}',
@@ -138,7 +183,9 @@ class ProfileScreen extends StatelessWidget {
                                       onPressed: () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => PersonalInfoPage()),);
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  PersonalInfoPage()),);
                                         // Navigate to edit profile screen
                                       },
                                       child: Text(
@@ -150,9 +197,11 @@ class ProfileScreen extends StatelessWidget {
                                       style: ElevatedButton.styleFrom(
                                         primary: Colors.brown[200],
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
+                                          borderRadius: BorderRadius.circular(
+                                              10.0),
                                         ),
-                                        padding: EdgeInsets.symmetric(vertical: 16.0),
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 16.0),
                                         minimumSize: Size(200, 60),
                                       ),
                                     ),
@@ -160,7 +209,7 @@ class ProfileScreen extends StatelessWidget {
 
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Column(
                                           children: [
@@ -173,7 +222,7 @@ class ProfileScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              '10',
+                                              favCount.toString(),
                                               style: TextStyle(
                                                 color: Colors.brown[200],
                                                 fontFamily: 'Nunito',
@@ -192,7 +241,7 @@ class ProfileScreen extends StatelessWidget {
                                             width: 3,
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(100),
+                                              BorderRadius.circular(100),
                                               color: Colors.grey,
                                             ),
                                           ),
@@ -208,7 +257,7 @@ class ProfileScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              '1',
+                                              resCount.toString(),
                                               style: TextStyle(
                                                 color: Colors.brown[200],
                                                 fontFamily: 'Nunito',
@@ -229,10 +278,12 @@ class ProfileScreen extends StatelessWidget {
                               right: 20,
                               child: GestureDetector(
                                 onTap: () {
-
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => userUpdate(userId: '${AuthenticationProvider.iduser}',)),);
+                                    MaterialPageRoute(builder: (context) =>
+                                        userUpdate(
+                                          userId: '${AuthenticationProvider
+                                              .iduser}',)),);
 
                                   // Handle onTap for the Icon (AntDesign.edit)
                                 },
@@ -247,18 +298,15 @@ class ProfileScreen extends StatelessWidget {
                               top: 0,
                               left: 0,
                               right: 0,
+
                               child: Center(
-                                child: Container(
+                                child:Container(
                                   width: innerWidth * 0.45,
-                                  child: ClipOval(
-                                    child: Image.asset(
-                                      '${AuthenticationProvider.img}',
-                                      width: 10,
-                                      height: 150,
-                                      fit: BoxFit.contain,
-                                    ),
+                                  child: CircleAvatar(backgroundImage:  FileImage(_imgFile),
+                                    radius: 75,
+
                                   ),
-                                ),
+                                )
                               ),
                             ),
                           ],
@@ -293,14 +341,16 @@ class ProfileScreen extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => MyReservations()));
+                                    MaterialPageRoute(builder: (context) =>
+                                        MyReservations()));
 
                                 // Handle onTap for the Container
                               },
                               child: Row(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Icon(
                                       Icons.business,
                                       color: Colors.white,
@@ -329,17 +379,18 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             child: GestureDetector(
                               onTap: () {
-
                                 Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => Myfav()));
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Myfav()));
 
                                 // Handle onTap for the Container
                               },
                               child: Row(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: Icon(
                                       Icons.favorite,
                                       color: Colors.white,
@@ -368,4 +419,28 @@ class ProfileScreen extends StatelessWidget {
       ],
     );
   }
+
+  Future<void> getresCount() async {
+    try {
+      List<ReservationModel> hotelList = await resRepository.getAll();
+      setState(() {
+        resCount = hotelList.length; // Update the user count
+      });
+    } catch (ex) {
+      print('Error getting Reservation count: $ex');
+    }
+  }
+
+  Future<void> getfavCount() async {
+    try {
+      List<FavModel> fav = await FavRepository().getByField('userid', AuthenticationProvider.iduser!);
+      setState(() {
+        favCount = fav.length; // Update the user count
+      });
+    } catch (ex) {
+      print('Error getting Complaints count: $ex');
+    }
+  }
+
+
 }

@@ -59,6 +59,8 @@ class _CompAdd extends State<CompAdd> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email,color: Colors.brown[300]),
+
                   hintText: "email",
                   labelText: "email",
                   labelStyle: TextStyle(fontWeight: FontWeight.bold),
@@ -96,6 +98,7 @@ class _CompAdd extends State<CompAdd> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.edit_note_outlined,color: Colors.brown[300]),
                   hintText: "Your Complaint",
                   labelText: "Your Complaint",
                   labelStyle: TextStyle(fontWeight: FontWeight.bold),
@@ -180,7 +183,8 @@ class _CompAdd extends State<CompAdd> {
             }
 
 
-                , child: Text("send")),
+                , child: Text("send",style:TextStyle(color: Colors.white)) ,style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.brown[300])),
+    ),
             iserror?Text("error:${error}",style: TextStyle(color: Colors.red),):SizedBox(),
             issuccess?Text("Added successfully",style: TextStyle(color: Colors.green),):SizedBox()
 

@@ -81,6 +81,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 style: TextStyle(color: Colors.black54),
 
                                 decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.person,color: Colors.brown[300]),
+
                                   border:
                                   OutlineInputBorder(borderSide:BorderSide(color: Colors.amber),
                                       borderRadius: BorderRadius.circular(10)),
@@ -125,6 +127,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 controller: usernameCtr,
                                 style: TextStyle(color: Colors.black54),
                                 decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.person_outline,color: Colors.brown[300]),
+
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide(
@@ -167,6 +171,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 controller: emailCtr,
                                 style: TextStyle(color: Colors.black54),
                                 decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.email,color: Colors.brown[300]),
+
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide(
@@ -206,6 +212,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 keyboardType: TextInputType.number,
                                 style: TextStyle(color: Colors.black54),
                                 decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.phone,color: Colors.brown[300]),
+
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide(
@@ -247,6 +255,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 style: TextStyle(color: Colors.black54),
                                 obscureText: true,
                                 decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.password,color: Colors.brown[300]),
+
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide(
@@ -285,6 +295,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                       });
                                     },
                                     decoration: InputDecoration(
+                                      prefixIcon: Icon(Icons.woman_outlined,color: Colors.brown[300]),
+
+
 
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
@@ -335,7 +348,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   else
                                     CircleAvatar(
                                       radius: 30,
-                                      backgroundColor: Color(0xFFA76F6F),
+                                      backgroundColor: Colors.brown[300],
                                       child: IconButton(
                                         color: Colors.white,
                                         onPressed: () async {

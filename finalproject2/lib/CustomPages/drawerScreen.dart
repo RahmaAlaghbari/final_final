@@ -1,15 +1,22 @@
+import 'dart:io';
+
+
 import 'package:flutter/material.dart';
 import 'package:project4/repository/authontication.dart';
 import '../views/login/login_page.dart';
 import '../views/setting_page.dart';
 import 'configuration.dart';
 
+
 class DrawerScreen extends StatefulWidget {
+
   @override
   _DrawerScreenState createState() => _DrawerScreenState();
 }
 
 class _DrawerScreenState extends State<DrawerScreen> {
+  final File _imgFile = File(AuthenticationProvider.img!);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,8 +27,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
         children: [
           Row(
             children: [
-              CircleAvatar(),
-              SizedBox(width: 10,),
+                 CircleAvatar(backgroundImage:  FileImage(_imgFile),),
+                       SizedBox(width: 10,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

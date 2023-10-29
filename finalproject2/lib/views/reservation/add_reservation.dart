@@ -69,7 +69,7 @@ class _ReservationPageState extends State<ReservationPage> {
               style: TextStyle(
                 fontSize: 25.0,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: Colors.brown[300],
               ),
             ),
             SizedBox(height: 20.0),
@@ -77,6 +77,8 @@ class _ReservationPageState extends State<ReservationPage> {
               'Select a date range for your reservation:',
               style: TextStyle(
                 fontSize: 18.0,
+                color: Colors.grey,
+
               ),
             ),
             SizedBox(height: 40.0),
@@ -93,8 +95,8 @@ class _ReservationPageState extends State<ReservationPage> {
                 decoration: InputDecoration(
                   labelText: fromdateCtr.text.isNotEmpty
                       ? 'From: ${fromdateCtr.text}'
-                      : 'Select From Date',
-                  prefixIcon: Icon(Icons.calendar_today),
+                      : 'Select From Date',labelStyle: TextStyle(color: Colors.black54),
+                  prefixIcon: Icon(Icons.calendar_today,color: Colors.brown[300]),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -132,8 +134,8 @@ class _ReservationPageState extends State<ReservationPage> {
                 decoration: InputDecoration(
                   labelText: todateCtr.text.isNotEmpty
                       ? 'To: ${todateCtr.text}'
-                      : 'Select To Date',
-                  prefixIcon: Icon(Icons.calendar_today),
+                      : 'Select To Date',labelStyle: TextStyle(color: Colors.black54),
+                  prefixIcon: Icon(Icons.calendar_today,color: Colors.brown[300]),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -163,7 +165,7 @@ class _ReservationPageState extends State<ReservationPage> {
               style: TextStyle(
                 fontSize: 25.0,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: Colors.brown[300],
               ),
             ),
             SizedBox(height: 20.0),
@@ -171,6 +173,8 @@ class _ReservationPageState extends State<ReservationPage> {
               'Enter the number of guests:',
               style: TextStyle(
                 fontSize: 18.0,
+                color: Colors.grey,
+
               ),
             ),
             SizedBox(height: 20.0),
@@ -179,8 +183,9 @@ class _ReservationPageState extends State<ReservationPage> {
               keyboardType: TextInputType.number,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
-                labelText: 'Number of Guests',
-                prefixIcon: Icon(Icons.person),
+                labelText: 'Number of Guests',labelStyle: TextStyle(color: Colors.black54),
+                prefixIcon: Icon(Icons.person,color: Colors.brown[300],
+                ),
                 filled: true,
                 fillColor: Colors.white,
                 border: OutlineInputBorder(
@@ -291,7 +296,8 @@ class _ReservationPageState extends State<ReservationPage> {
 
 
 
-              child: Text('Submit Reservation'),
+              child: Text('Submit Reservation',style: TextStyle(color: Colors.white)), style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.brown[300])),
+
             ),
 
           ],
