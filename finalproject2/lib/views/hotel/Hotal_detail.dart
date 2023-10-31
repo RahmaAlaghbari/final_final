@@ -99,7 +99,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
                         height: 60,
                         decoration: BoxDecoration(
                             color: Colors.pink
-                            .,
+                            ,
                             borderRadius: BorderRadius.circular(20)),
                         child: Center(
                           child: GestureDetector(
