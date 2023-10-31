@@ -27,7 +27,11 @@ class _DrawerScreenState extends State<DrawerScreen> {
         children: [
           Row(
             children: [
-                 CircleAvatar(backgroundImage:  FileImage(_imgFile),),
+      CircleAvatar(
+          backgroundImage: AuthenticationProvider.img == 'assets/person.jpg'
+          ? AssetImage('${AuthenticationProvider.img}') as ImageProvider<Object>?
+            : _imgFile != null ? FileImage(_imgFile) : null,
+    ),
                        SizedBox(width: 10,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

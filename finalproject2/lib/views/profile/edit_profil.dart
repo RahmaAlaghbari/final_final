@@ -52,16 +52,14 @@ class _userUpdate extends State<userUpdate> {
         _imgController.text = user.img?? "";
         _uNameController.text = user.uName?? "";
         _passwordController.text = user.password?? "";
-        _phoneController.text = user.phone as String;
+        _phoneController = user.phone as TextEditingController;
         _perController.text = user.per?? "";
         _genderController.text = user.gender?? "";
         _emailController.text = user.email?? "";
 
       }
     } catch (e) {
-      // Handle any errors
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error loading user: $e'),backgroundColor:Colors.brown[300]),);
+
     }
   }
 
@@ -300,7 +298,7 @@ Widget build(BuildContext context) {
 
 
                         ),
-                        keyboardType: TextInputType.number,
+                        // keyboardType: TextInputType.,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please enter a phone number';

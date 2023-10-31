@@ -302,9 +302,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: Center(
                                 child:Container(
                                   width: innerWidth * 0.45,
-                                  child: CircleAvatar(backgroundImage:  FileImage(_imgFile),
+                                  child: CircleAvatar(
+                                    backgroundImage:  FileImage(_imgFile) ,
                                     radius: 75,
-
                                   ),
                                 )
                               ),
@@ -422,7 +422,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> getresCount() async {
     try {
-      List<ReservationModel> hotelList = await resRepository.getAll();
+      List<ReservationModel> hotelList = await resRepository.getByField('userid', AuthenticationProvider.iduser!);
       setState(() {
         resCount = hotelList.length; // Update the user count
       });

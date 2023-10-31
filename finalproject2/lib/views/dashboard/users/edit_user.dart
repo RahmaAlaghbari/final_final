@@ -56,9 +56,9 @@ class _UserUpdate extends State<UserUpdate> {
 
       }
     } catch (e) {
-      // Handle any errors
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error loading user: $e'),backgroundColor:Colors.brown[300]),);
+      // // Handle any errors
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(content: Text('Error loading user: $e'),backgroundColor:Colors.brown[300]),);
     }
   }
 
@@ -98,9 +98,9 @@ class _UserUpdate extends State<UserUpdate> {
         }
       } catch (e) {
         // Handle any errors
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error updating user') ,backgroundColor:Colors.brown[300]),
-        );
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   SnackBar(content: Text('Error updating user') ,backgroundColor:Colors.brown[300]),
+        // );
       }
     }
   }

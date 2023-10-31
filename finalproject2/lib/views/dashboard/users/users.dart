@@ -63,9 +63,9 @@ class _UserView extends State<UserView> {
                   // list.sort((a, b) => a.fName.compareTo(b.fName!));
 
                   return Container(
-                    height: 500, // Set the desired height
                     child: ListView.separated(
                       itemBuilder: (context, index) {
+                        final File _imgFile = File(list[index].img!);
                         return ListTile(
                           contentPadding: EdgeInsets.symmetric(vertical: 16.0), // Increase the vertical padding
                           leading: list[index].img == ''
@@ -74,14 +74,11 @@ class _UserView extends State<UserView> {
                             width: 50,
                             height: 50,
                           )
-                              : ClipOval(
-                            child: Image.network(
-                              list[index].img!,
-                              height: 50,
-                              width: 56,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                              :  CircleAvatar(
+                        backgroundImage: list[index].img == 'assets/person.jpg'
+                        ? AssetImage('${list[index].img}') as ImageProvider<Object>?
+                            : _imgFile != null ? FileImage(_imgFile) : null,
+                        ),
                           title: Text(
                             "${list[index].fName}",
                             style: TextStyle(

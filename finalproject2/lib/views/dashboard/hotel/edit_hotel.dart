@@ -56,10 +56,10 @@ class _HotelUpdateState extends State<HotelUpdate> {
       }
     } catch (e) {
       // Handle any errors
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error loading hotel: $e'),backgroundColor:Colors.brown[300],
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(content: Text('Error loading hotel: $e'),backgroundColor:Colors.brown[300],
+      //   ),
+      // );
     }
   }
 
@@ -95,10 +95,10 @@ class _HotelUpdateState extends State<HotelUpdate> {
           );
         }
       } catch (e) {
-        // Handle any errors
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error updating hotel: $e'),backgroundColor:Colors.brown[300],)
-        );
+        // // Handle any errors
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   SnackBar(content: Text('Error updating hotel: $e'),backgroundColor:Colors.brown[300],)
+        // );
       }
     }
   }

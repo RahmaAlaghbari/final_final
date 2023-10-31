@@ -41,7 +41,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
                             scaleX: 3.2,
                             scaleY: 5, // Increase the scale factor as desired
                             child:
-                            Image.network('${AuthenticationProvider.avatarhotel}'),
+                            Image.network('${AuthenticationProvider.avatarhotel}',fit: BoxFit.cover,),
                           ),
                         ),
                       ),
@@ -98,7 +98,8 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
                       child: Container(
                         height: 60,
                         decoration: BoxDecoration(
-                            color: Colors.brown[300],
+                            color: Colors.pink
+                            .,
                             borderRadius: BorderRadius.circular(20)),
                         child: Center(
                           child: GestureDetector(
@@ -139,7 +140,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
             Align(
               alignment: Alignment.bottomLeft,
               child: Container(
-                margin: EdgeInsets.only(top: 400),
+                margin: EdgeInsets.only(top: 430),
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
